@@ -1,7 +1,7 @@
 # Учебная Практика
 Это - Github-репозиторий проекта учебной практики студента группы БПИ2303 университета Московский Технический Университет Связи и Информатики Кузнецова Игоря
 
-[![N|Solid](https://mtuci.ru/local/templates/mtuci/assets/img/svg/logo_ru.svg)](https://mtuci.ru/)
+[![](https://mtuci.ru/local/templates/mtuci/assets/img/svg/logo_ru.svg)](https://mtuci.ru/)
 
 ## Технические требоввания
 - Запрещено использование [A-Parser](https://a-parser.com/)
