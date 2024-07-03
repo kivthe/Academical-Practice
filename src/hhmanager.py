@@ -1,5 +1,4 @@
 import requests
-import json
 import hhtypes
 import copy
 
@@ -60,7 +59,3 @@ def GetVacancies() -> list[hhtypes.Vacancy]:
       vacancies.append(copy.deepcopy(hhvacancy))
   return vacancies
 #--------------------------------------------------
-vacancies = GetVacancies()
-print(len(vacancies))
-for i in vacancies:
-  print(i.name, i.area.name, end="\n")
