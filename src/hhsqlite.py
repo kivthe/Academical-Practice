@@ -1,23 +1,24 @@
 from django.db.utils import OperationalError
 from main.models import VacancyModel
-import hhtypes
+from src import hhtypes
 
 #--------------------------------------------------
 
-def CreateVacancyRecord(vacancy=hhtypes.Vacancy) -> bool:
+def CreateVacancyRecord(vacancy=hhtypes.Vacancy) -> None:
   new_record = VacancyModel(id=vacancy.id,
                             name=vacancy.name,
-                            area_id=vacancy.area.id,
-                            area_name=vacancy.area.name,
-                            salary_max=vacancy.salary.max,
-                            salary_min=vacancy.salary.min,
-                            salary_currency=vacancy.salary.currency,
-                            salary_gross=vacancy.salary.gross,
-                            experience_id=vacancy.experience.id,
-                            experience_name=vacancy.experience.name,
+                            area_id=vacancy.area_id,
+                            area_name=vacancy.area_name,
+                            salary_max=vacancy.salary_max,
+                            salary_min=vacancy.salary_min,
+                            salary_currency=vacancy.salary_currency,
+                            salary_gross=vacancy.salary_gross,
+                            experience_id=vacancy.experience_id,
+                            experience_name=vacancy.experience_name,
                             url=vacancy.url,
-                            alternate_url=vacancy.alternate_url)
-  new_record.save(force_insert=True)
+                            alternate_url=vacancy.alternate_url
+  )
+  new_record.save()
 
 #--------------------------------------------------
 
@@ -30,21 +31,21 @@ def CheckVacancyModelExistence() -> bool:
 
 #--------------------------------------------------
 
-def GetVacancyFromModel(primary_key: hhtypes.Vacancy.id) -> hhtypes.Vacancy:
+def GetVacancyFromModel(primary_key: str) -> hhtypes.Vacancy:
   if not CheckVacancyModelExistence(): return hhtypes.Vacancy()
   try:
     object = VacancyModel.objects.get(pk=primary_key)
     vacancy = hhtypes.Vacancy
     vacancy.id = object.id
     vacancy.name = object.name
-    vacancy.area.id = object.area_id
-    vacancy.area.name = object.area_name
-    vacancy.salary.max = object.salary_max
-    vacancy.salary.min = object.salary_min
-    vacancy.salary.currency = object.salary_currency
-    vacancy.salary.gross = object.salary_gross
-    vacancy.experience.id = object.experience_id
-    vacancy.experience.name = object.experience_name
+    vacancy.area_id = object.area_id
+    vacancy.area_name = object.area_name
+    vacancy.salary_max = object.salary_max
+    vacancy.salary_min = object.salary_min
+    vacancy.salary_currency = object.salary_currency
+    vacancy.salary_gross = object.salary_gross
+    vacancy.experience_id = object.experience_id
+    vacancy.experience_name = object.experience_name
     vacancy.url = object.url
     vacancy.alternate_url = object.alternate_url
     return vacancy

@@ -1,5 +1,5 @@
 import requests
-import hhtypes
+from src import hhtypes
 import copy
 
 hhvacancies = 'http://api.hh.ru/vacancies'
@@ -37,25 +37,23 @@ def GetVacancies() -> list[hhtypes.Vacancy]:
       hhvacancy.id = vacancy['id']
       hhvacancy.name = vacancy['name']
       hhvacancy.hast_test = vacancy['has_test']
+      hhvacancy.url = vacancy['url']
+      hhvacancy.alternate_url = vacancy['alternate_url']
       if vacancy['area'] is not None:
-        hhvacancy.area = hhtypes.Area
-        hhvacancy.area.id = vacancy['area']['id']
-        hhvacancy.area.name = vacancy['area']['name']
-        hhvacancy.area.url = vacancy['area']['url']
+        hhvacancy.area_id   = vacancy['area']['id']
+        hhvacancy.area_name = vacancy['area']['name']
       if vacancy['salary'] is not None:
-        hhvacancy.salary = hhtypes.Salary
-        hhvacancy.salary.min = vacancy['salary']['from']
-        hhvacancy.salary.max = vacancy['salary']['to']
-        hhvacancy.salary.currency = vacancy['salary']['currency']
-        hhvacancy.salary.gross = vacancy['salary']['gross']
-      if vacancy['type'] is not None:
-        hhvacancy.type = hhtypes.IDName
-        hhvacancy.type.id = vacancy['type']['id']
-        hhvacancy.type.name = vacancy['type']['name']
+        hhvacancy.salary_min = vacancy['salary']['from']
+        hhvacancy.salary_max = vacancy['salary']['to']
+        hhvacancy.salary_currency = vacancy['salary']['currency']
+        hhvacancy.salary_gross = vacancy['salary']['gross']
+      #if vacancy['type'] is not None:
+        #hhvacancy.type = hhtypes.IDName
+        #hhvacancy.type.id = vacancy['type']['id']
+        #hhvacancy.type.name = vacancy['type']['name']
       if vacancy['experience'] is not None:
-        hhvacancy.type = hhtypes.IDName
-        hhvacancy.type.id = vacancy['experience']['id']
-        hhvacancy.type.name = vacancy['experience']['name']
+        hhvacancy.experience_id   = vacancy['experience']['id']
+        hhvacancy.experience_name = vacancy['experience']['name']
       vacancies.append(copy.deepcopy(hhvacancy))
   return vacancies
 #--------------------------------------------------
