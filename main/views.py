@@ -7,11 +7,13 @@ from src import hhsqlite
 
 # Create your views here.
 
-def get(request):
+def main(request):
   vacancies = hhmanager.GetVacancies()
+  #print(len(vacancies),end="\n\n")
   for i in vacancies:
-      hhsqlite.CreateVacancyRecord(i)
+    hhsqlite.CreateVacancyRecord(i)
+  #print(hhsqlite.GetVacancyRecordsCount(),end="\n\n")
   records = VacancyModel.objects.all().values()
-  hhsqlite.PrintAllVacancies()
-  print('\n')
+  #hhsqlite.PrintAllVacancies()
+  #print('\n')
   return JsonResponse(list(records), safe=False)

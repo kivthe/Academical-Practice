@@ -85,16 +85,6 @@ class IDName:
 # Vacancy struct
 @dataclass
 class Vacancy:
-  def __init__(self):
-    self.id = ''
-    self.name = ''
-    self.hast_test = False
-    self.area = ('', '')
-    self.salary = ('','','', False)
-    self.experience = ('', '')
-    self.url = ''
-    self.alternate_url = ''
-
   id: str
   #premium: bool
   name: str
@@ -107,8 +97,10 @@ class Vacancy:
   salary_max:str
   salary_currency: str
   salary_gross: bool
-  #type: IDName
+  type_id: str
+  type_name: str
   #address: Address
+  address_raw: str
   #response_url: str
   #sort_point_distance: any
   #published_at: str
@@ -121,18 +113,22 @@ class Vacancy:
   alternate_url: str
   #relations: set
   #employer: EmployerElement
-  #snippet: Snippet
+  snippet_requirement: str
+  snippet_responsibility: str
   #contacts: list
-  #schedule: IDName
+  schedule_id: str
+  schedule_name: str
   #working_days: set
   #working_time_intervals: set
   #working_time_modes: set
   #accept_temporary: bool
   experience_id: str
   experience_name: str
-  #employemnt: IDName
+  employemnt_id: str
+  employment_name: str
   #adv_response_url: str
   #is_adv_vacancy: bool
   #adv_context: any
+  key_skills: list
 
 
