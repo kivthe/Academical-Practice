@@ -36,7 +36,7 @@ def GetVacancies() -> list[hhtypes.Vacancy]:
   if not response.ok: return list()
   pages_count = response.json().get('pages')
   # Hard-coded limiter to how many pages the program can request
-  pages_count //= 40
+  pages_count //= 10
   vacancies = list()
   for i in range(pages_count):
     params = {'page' : i}

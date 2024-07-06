@@ -88,5 +88,10 @@ def main(message):
     bot.send_message(message.chat.id, 'Не удалось загрузить данные')
 
 #------------------------------------------------------------
+'''
+@bot.message_handler()
+def text_message(message):
+'''
+#------------------------------------------------------------
 
 bot.polling(non_stop=True)
