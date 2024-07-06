@@ -87,3 +87,8 @@ def GetVacancies() -> list[hhtypes.Vacancy]:
       vacancies.append(copy.deepcopy(hhvacancy))
   return vacancies
 #--------------------------------------------------
+
+def CheckFilterJson(json_data) -> bool:
+  return (json_data['salary_min'] is not None) and (json_data['salary_max'] is not None) and (json_data['salary_currency'] is not None) and (json_data['area_id'] is not None) and (json_data['expereince_id'] is not None)
+
+#--------------------------------------------------
