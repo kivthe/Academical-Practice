@@ -46,4 +46,12 @@ def GetDataFromServer(address: str, port: int, filter):
 
 #--------------------------------------------------
 
+def RefreshServerData(address: str, port: int):
+  if not CanConnect(address, port): return {'status':'failure'}
+  address_str = "http://{}:{}/{}".format(address,port,refresh_request) #'http://' + address + ':' + str(port) + '/' + refresh_request
+  response = requests.get(address_str)
+  return json.loads(response.text)
+
+#--------------------------------------------------
+
 
